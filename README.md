@@ -151,6 +151,30 @@ Uygulamamız aşağıdaki AR teknolojilerini kullanır:
 - [AR Özellikleri Demo](https://www.youtube.com/watch?v=example3) - Artırılmış gerçeklik özelliklerinin demosu
 - [Geliştirici Günlüğü #1](https://www.youtube.com/watch?v=example4) - Geliştirme sürecinin arkasındaki hikaye
 
+
+## 📋 Proje Takibi ve Yol Haritası
+
+Projeye ait tüm görevler, gelişim süreci ve sorumluluk paylaşımı Trello üzerinden detaylı olarak planlanmıştır. Aşağıdaki bağlantı üzerinden projemizin aşamalarını adım adım takip edebilirsiniz:
+
+🔗 [Trello Proje Panosu – Kalite Proje](https://trello.com/b/3vFKPIRl/kali%CC%87teproje)
+
+### 🗂️ Trello Panosundaki Bölümler
+
+| Başlık | Açıklama |
+|--------|----------|
+| 📌 **Yapılacaklar (To Do)** | Henüz başlanmamış görevler ve planlanan işler |
+| 🚧 **Devam Edenler (In Progress)** | Şu anda üzerinde çalışılan görevler |
+| ✅ **Tamamlananlar (Done)** | Tamamlanmış tüm görev ve aşamalar |
+| 🧠 **Araştırma / Analiz** | Projeye dair ön araştırmalar, referanslar ve teknik analizler |
+| 🎨 **Tasarım** | Uygulamanın arayüz tasarımları ve kullanıcı deneyimi planları |
+| 💻 **Geliştirme** | Unity ve ARCore/ARKit ile yapılan kodlama süreçleri |
+| 🧪 **Test ve Geri Bildirim** | Test süreci, kullanıcı geri bildirimleri ve hata düzeltmeleri |
+| 🗣️ **Sunum Hazırlığı** | Proje tanıtımı, sunum slaytları ve video içerikler |
+| 📦 **Teslim** | Final dökümanları, video bağlantıları ve proje teslim dosyaları |
+
+Trello panosu, proje yönetim sürecimizi daha şeffaf ve organize bir şekilde yürütmemize yardımcı olmaktadır. Her takım üyesi görev dağılımını, son teslim tarihlerini ve ilerleme durumunu bu pano üzerinden kolayca takip edebilir.
+
+
 ## 👨‍💻 Geliştirme Ekibi
 
 - Dünya Kaşifi Proje Ekibi
