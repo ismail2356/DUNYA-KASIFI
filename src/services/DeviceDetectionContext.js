@@ -1,16 +1,12 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { Platform } from 'react-native';
-import * as ExpoSensors from 'expo-sensors';
-
-// Sensör güncelleme aralığı (ms)
-const SENSOR_UPDATE_INTERVAL = 100;
 
 // Context oluşturma
 const DeviceDetectionContext = createContext();
 
 /**
- * Cihaz algılama ve sensör verilerini sağlayan provider bileşeni.
- * AR desteği kontrolü ve sensör verilerine erişim için kullanılır.
+ * Cihaz algılama sağlayan basitleştirilmiş provider bileşeni.
+ * APK build için sensör bağımlılıkları kaldırıldı.
  */
 export const DeviceDetectionProvider = ({ children }) => {
   // Cihaz özellikleri durumları
@@ -27,65 +23,16 @@ export const DeviceDetectionProvider = ({ children }) => {
     checkSensorsAvailability();
   }, []);
 
-  // Sensör verilerini alma
-  useEffect(() => {
-    if (hasSensors) {
-      // Sensör güncelleme aralığını ayarla
-      ExpoSensors.Gyroscope.setUpdateInterval(SENSOR_UPDATE_INTERVAL);
-      ExpoSensors.Accelerometer.setUpdateInterval(SENSOR_UPDATE_INTERVAL);
-
-      // Jiroskop sensör dinleyicisini ayarla
-      let gyroSubscription = null;
-      
-      ExpoSensors.Gyroscope.isAvailableAsync().then(available => {
-        if (available) {
-          gyroSubscription = ExpoSensors.Gyroscope.addListener(gyroData => {
-            setSensorData(prev => ({
-              ...prev,
-              gyroscope: gyroData
-            }));
-          });
-        }
-      });
-
-      // İvmeölçer sensör dinleyicisini ayarla
-      let accelSubscription = null;
-      
-      ExpoSensors.Accelerometer.isAvailableAsync().then(available => {
-        if (available) {
-          accelSubscription = ExpoSensors.Accelerometer.addListener(accelData => {
-            setSensorData(prev => ({
-              ...prev,
-              accelerometer: accelData
-            }));
-          });
-        }
-      });
-
-      // Temizleme fonksiyonu
-      return () => {
-        if (gyroSubscription) {
-          gyroSubscription.remove();
-        }
-        if (accelSubscription) {
-          accelSubscription.remove();
-        }
-      };
-    }
-  }, [hasSensors]);
-
   // AR desteğini kontrol etme fonksiyonu
   const checkARSupport = async () => {
-    // Gerçek uygulamada ARKit veya ARCore desteği kontrol edilecek
-    // Şimdilik basit bir kontrol yapıyoruz
     try {
       // Platform'a göre AR desteği kontrolü
       if (Platform.OS === 'ios') {
         // iOS için ARKit desteği kontrolü
-        setHasARSupport(false); // Örnek olarak false ayarlandı
+        setHasARSupport(false); // APK build için false
       } else if (Platform.OS === 'android') {
         // Android için ARCore desteği kontrolü
-        setHasARSupport(false); // Örnek olarak false ayarlandı
+        setHasARSupport(false); // APK build için false
       }
     } catch (error) {
       console.error('AR desteği kontrol edilirken hata oluştu:', error);
@@ -93,14 +40,11 @@ export const DeviceDetectionProvider = ({ children }) => {
     }
   };
 
-  // Sensör varlığını kontrol etme fonksiyonu
+  // Sensör varlığını kontrol etme fonksiyonu (basitleştirilmiş)
   const checkSensorsAvailability = async () => {
     try {
-      // Expo ile sensör varlığını kontrol et
-      const isGyroAvailable = await ExpoSensors.Gyroscope.isAvailableAsync();
-      const isAccelAvailable = await ExpoSensors.Accelerometer.isAvailableAsync();
-      
-      setHasSensors(isGyroAvailable && isAccelAvailable);
+      // APK build için sensör desteği kapatıldı
+      setHasSensors(false);
     } catch (error) {
       console.error('Sensör kontrolü sırasında hata oluştu:', error);
       setHasSensors(false);
@@ -112,7 +56,7 @@ export const DeviceDetectionProvider = ({ children }) => {
     hasARSupport,
     hasSensors,
     sensorData,
-    usePseudoAR: !hasARSupport && hasSensors, // AR desteği yoksa ve sensörler varsa pseudo-AR kullan
+    usePseudoAR: false, // APK build için kapatıldı
   };
 
   return (
