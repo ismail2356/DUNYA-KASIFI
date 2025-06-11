@@ -16,12 +16,11 @@
       "versionCode": 1,
       "permissions": []
     },
-    "web": {
-    },
+    "web": {},
     "extra": {
       "eas": {
-        "projectId": "dunya-kasifi-project"
+        "projectId": "85f8adf0-4b13-401e-9107-e135aa829a3f"
       }
     }
   }
-} 
+}
