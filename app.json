@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Dünya Kaşifi",
+    "slug": "dunya-kasifi",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.dunya.kasifi",
+      "versionCode": 1,
+      "permissions": []
+    },
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "85f8adf0-4b13-401e-9107-e135aa829a3f"
+      }
+    }
+  }
+}
